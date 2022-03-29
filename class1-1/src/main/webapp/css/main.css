@@ -1,0 +1,59 @@
+/*모든 요소에 대해서 마진,패딩을 0으로 잡는게 편함 */
+*{
+    margin:0;
+    padding:0;
+}
+/*다른 두 태그에 대한 css를 한꺼번에 지정 가능함*/
+section,ul{
+    margin: 10px 0px;
+}
+/*부모자식간의 관계에 대한 룰도 지정가능함*/
+section>ul>li{
+    font-size:20px;
+    font-weight:bold;
+}
+/* a태그와 a태그 바로다음에 따라오는 ul태그 하나만 적용 */
+a + ul {
+    background-color:gold;
+}
+/* a태그와 a태그 바로다음에 따라오는 ul태그 전부 적용*/
+a ~ ul {
+    border : 1px solid gray
+}
+/* a태그 중에서 target 속성이 _self인 태그만 적용
+target속성은 링크를 클릭할 때 창을 어떻게 열지 결정하는속성인데,
+ex) _self : 현재 창에서 엶.. , _blank : 새 창에서 엶 ... */
+a[target="_self"]{
+    border : 1px solid darkgray;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
+}
+/* alt속성이 TYPE 이거나, TYPE-___ 의 형식만 적용함.*/
+img[alt|="TYPE"]{
+    box-shadow:-1px -1px 3px black;
+}
+/* target속성이 _b로 시작하는 태그만 적용함
+a태그는 기본적으로 inline인데 margin과 padding을 전부 다 먹이기 위해서 inline-block를 사용함 */
+a[target^="_b"]{
+    background-color: blue;
+    display : inline-block;
+    padding: 10px;
+    margin: 30px;
+    color: white;
+}
+/* href속성이 istj로 끝나는 태그만 적용함 */
+a[href$="istj"]{
+    background-color: green;
+    color : white;
+}
+/* 가장중요!!! class속성에 "type을 포함"하고 있는 태그만 적용함 */
+ul[class*="type"]{
+    text-align: center;
+    padding: 35px 0;
+}
+/* class속성에 type을 "독립적으로" 포함하고 있는 태그만 적용함 
+ex) c-type (X) c type(O) */
+ul[class~="type"]{
+    border:1px dashed purple;
+}
